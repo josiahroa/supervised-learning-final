@@ -32,7 +32,7 @@ Data Source: https://www.kaggle.com/datasets/jakubkrasuski/league-of-legends-mat
 
 ### Identify Problem
 
-Identify which team wins based on the level, solo rank, w/l history, and selected chamption mastery of the players involved after champion selection.
+Identify which team wins based on the level, rank, w/l history, and selected chamption mastery of the players involved after champion selection. These are all pre-game indicators that describe skill (vaguely) and experience. There are plenty of other parameters for winning a game that are not captured in the data. These include variables like team dynamics, strategy, champion composition, enemy team stats, and the true performance of the player during the game. Because of this, our model accuracy will most likely be around 55%-70% with pre-game features.
 
 ### Clean Data
 
@@ -41,3 +41,11 @@ Identify which team wins based on the level, solo rank, w/l history, and selecte
 
 - There are multiple players per match. I will need to aggregate their data into team-level features.
 - solo_tier, solo_rank, and solo_lp should be normalized
+
+### EDA
+
+- I determined which features matched pre-game inputs for a game. With these features, I made sure to clean them and aggregate them to their respective teams. Cleaning out NaN values and ensuring to calculate the mean of player features per team was necessary for predicting if a team wins or loses.
+
+### Performing Analysis with Supervised Machine Learning Models
+
+- I attempted using a Logistic Regression model to start with. The accuracy on this was lower than what I would've wanted, so I added support for a Random Forest and SVM model. The SVM model achieved the highest accuracy. I still need to determine why this model works better than others.
